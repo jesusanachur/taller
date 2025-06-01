@@ -16,7 +16,7 @@ def registro(driver):
         "firstname": "jesus david",
         "lastname": "anachury",
         "userName": "Anachury15",
-        "password": "Anachury1520001",
+        "password": "Anachury@1520001",
     }
 
     for campo_id, valor in datos.items():
@@ -31,7 +31,7 @@ def registro(driver):
     driver.switch_to.default_content()
 
     # Habilitar el botón Register de manera manual
-    habilitar_boton_register(driver)
+    boton_register(driver)
 
     # Hacer clic en el botón Register
     driver.find_element(By.ID, "register").click()
@@ -41,13 +41,14 @@ def registro(driver):
     driver.find_element(By.ID, "gotologin").click()
     time.sleep(2)
 
-def habilitar_boton_register(driver):
+def boton_register(driver):
     driver.execute_script("document.getElementById('register').disabled = false;")
     time.sleep(1)
 
 def usuario(driver):
+
     driver.find_element(By.ID, "userName").send_keys("Anachury15")
-    driver.find_element(By.ID, "password").send_keys("Anachury1520001")
+    driver.find_element(By.ID, "password").send_keys("Anachury@1520001")
     driver.find_element(By.ID, "login").click()
     time.sleep(3)
 
@@ -66,6 +67,7 @@ def main():
     registro(driver)
     usuario(driver)
     verificar_login(driver)
+    boton_register(driver)
     driver.quit()
 
 if __name__ == "__main__":
